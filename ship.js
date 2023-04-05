@@ -1,30 +1,25 @@
-function Ship(length) {
-    this.length = length;
-    this.hits = 0;
-
-    this.hit = () => {
-        this.hits += 1 ///?
-    }
-    this.isSunk = () => {
-        if (this.hits >= this.length) {
-            return true
-        } else if (this.hits < this.length) {
-            return false
+function Ship(length, x, y) {
+    let hits = 0
+    return {length: length,
+        x: x,
+        y: y,
+        hits: hits,
+        hit: function() {
+            this.hits += 1;
+        },
+        isSunk: function() {
+            if (this.hits >= this.length) {
+                return true
+            } else if (this.hits < this.length){
+                return false
+            }
         }
     }
-    return {length: this.length, hits: this.hits, hit: this.hit, isSunk: this.isSunk}
 }
 
-let bigShip = new Ship(2);
+let bigShip = new Ship(1,2,3);
 
 
-function gameBoard() {
-
-}
-
-function Player() {
-
-}
-
+// console.log(bigShip)
 
 module.exports = Ship
