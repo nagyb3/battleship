@@ -1,4 +1,4 @@
-function Ship(length, x, y) {
+function Ship(length, x, y, direction) {
     let hits = 0
     return {length: length,
         x: x,
@@ -13,13 +13,11 @@ function Ship(length, x, y) {
             } else if (this.hits < this.length){
                 return false
             }
-        }
+        },
+        direction: direction || 'x'
     }
 }
 
-let bigShip = new Ship(1,2,3);
-
-
-// console.log(bigShip)
+// let bigShip = new Ship(1,2,3);
 
 module.exports = Ship

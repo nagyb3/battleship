@@ -3,10 +3,14 @@ const Ship = require('./ship');
 function Gameboard() {
     return {
         allShipArray: [],
-        placeShip: function(x, y, /*direction,*/ length) {
-            let newShip = new Ship(length, x, y);
-            this.allShipArray.push(newShip);
-            // console.log(this.allShipArray[this.allShipArray.length - 1])
+        placeShip: function(x, y, length, direction = "x") {
+            if (direction === x) {
+                let newShip = new Ship(length, x, y);
+                this.allShipArray.push(newShip);
+            } else if (direction === y) {
+                let newShip = new Ship(length, x, y, "y");
+                this.allShipArray.push(newShip);
+            }
         },
         receiveAttack: function(x, y) {
             //(write funciton later using y directioned ships)
@@ -22,14 +26,16 @@ function Gameboard() {
         },
         missedAttacks: [],
         hasAllShipSank: function() {
-            this.allShipArray.forEach((ship) => {
-                if (ship.isSunk() === false) {
+            for (let i = 0; i < this.allShipArray.length; i++) {
+                if (this.allShipArray[i].length - this.allShipArray[i].hits !== 0) {
                     return false
                 }
-            })
+            }
             return true
         }
     }
 }
+
+//TODO: dont allow to receive hit on the ship where it has already been hit
 
 module.exports = Gameboard
