@@ -13,7 +13,7 @@ function Gameboard() {
             }
         },
         receiveAttack: function(x, y) {
-            for (let i = 0; i < this.allShipArray[i].shipLength; i++) {
+            for (let i = 0; i < this.allShipArray.length; i++) {
                 if (this.allShipArray[i].direction === 'x') {
                     if (this.allShipArray[i].y === y) {
                         if (x >= this.allShipArray[i].x
@@ -22,7 +22,7 @@ function Gameboard() {
                         }
                     }
                 } else if (this.allShipArray[i].direction === 'y') {
-                    if (this.allShipArray[i].y === y) {
+                    if (this.allShipArray[i].x === x) {
                         if (y >= this.allShipArray[i].y
                             && y <= (this.allShipArray[i].y + this.allShipArray[i].shipLength - 1)) {
                             this.allShipArray[i].hit();
@@ -67,8 +67,9 @@ function Gameboard() {
 
 //TODO: dont allow to receive hit on the ship where it has already been hit
 
-let newGameboard = new Gameboard();
-newGameboard.placeShip(2, 3, 5, 'y')
-newGameboard.receiveAttack(2, 5)
+// let newGameboard = new Gameboard();
+// newGameboard.placeShip(2, 3, 5, 'y')
+// newGameboard.receiveAttack(2, 5)
+// console.log(newGameboard.allShipArray)
 
 module.exports = Gameboard
