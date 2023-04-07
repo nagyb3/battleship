@@ -1,6 +1,6 @@
 function Ship(length, x, y, direction) {
     let hits = 0
-    return {length: length,
+    return {shipLength: length,
         x: x,
         y: y,
         hits: hits,
@@ -8,9 +8,9 @@ function Ship(length, x, y, direction) {
             this.hits += 1;
         },
         isSunk: function() {
-            if (this.hits >= this.length) {
+            if (this.hits >= this.shipLength) {
                 return true
-            } else if (this.hits < this.length){
+            } else if (this.hits < this.shipLength){
                 return false
             }
         },
